@@ -1,7 +1,5 @@
 // Java program to do a Framework on CRUD operations using MySQL database.
-//Don't touch my code
 import java.sql.*;
-import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -18,7 +16,7 @@ class CRUD
 	String query, id;
 	String header = "";
 	String tableName;
-	String activeStatus = "'active'";
+	String activeStatus = "'A'";
 
 	public CRUD()
 	{
@@ -240,7 +238,7 @@ class CRUD
 	public void deleteRecord()
 	{
 		readIdFromUser();
-        query = "UPDATE " + tableName + " SET " + columnNames.get(columnNames.size() - 1) + " = 'inactive' where " + columnNames.get(0) + " = '" + id + "' and " + columnNames.get(columnNames.size() - 1) + " = " + activeStatus;
+        query = "UPDATE " + tableName + " SET " + columnNames.get(columnNames.size() - 1) + " = 'I' where " + columnNames.get(0) + " = '" + id + "' and " + columnNames.get(columnNames.size() - 1) + " = " + activeStatus;
         try
         {
         	rowCount = stmt.executeUpdate(query);
