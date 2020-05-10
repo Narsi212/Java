@@ -20,7 +20,7 @@ class CRUDOperations
     {
         try
         {
-        	InterfaceDb crud = (InterfaceDb)Class.forName(className).newInstance();
+            InterfaceDb crud = (InterfaceDb)Class.forName(className).newInstance();
             connection = crud.getConnection();
             getColumns();
         }
@@ -38,8 +38,8 @@ class CRUDOperations
 
     public void getColumns()
     {
-    	System.out.print("Enter table name: ");
-    	tableName = scanner.nextLine();
+        System.out.print("Enter table name: ");
+        tableName = scanner.nextLine();
         query = "SELECT * FROM " + tableName;
         try
         {
@@ -158,6 +158,24 @@ class CRUDOperations
             className = scanner.next();
         }
         CRUDOperations cr = new CRUDOperations(className);
-        cr.read();
+        System.out.println("Welcome to databases program!\n1. Create\n2. Read");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+        if(choice == 1)
+        {
+            cr.create();
+        }
+        else if(choice == 2)
+        {
+            cr.read();
+        }  
+        else
+        {
+            System.out.println("Choose an option correctly!");
+        }
+        if (cr.connection != null)
+        {
+            cr.connection.close();
+        }
     }
 }
